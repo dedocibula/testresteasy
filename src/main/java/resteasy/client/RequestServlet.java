@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.jboss.resteasy.client.ClientResponse;
+import resteasy.services.QueryHelper;
 import resteasy.services.RequestBuilder;
 import resteasy.services.RequestType;
 
@@ -34,7 +35,10 @@ public class RequestServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
       
-        request.setAttribute("urls", generateUrls("http://localhost:8084/TestAppResteasy/rest/content_type/html"));
+        request.setAttribute("urls", 
+                generateUrls(
+                    "http://localhost:8084/TestAppResteasy/rest/content_type/html",
+                    "http://localhost:8084/TestAppResteasy/rest/query_string/weird"));
         request.getRequestDispatcher("/requestBuilder.jsp").forward(request, response);
     }
 
@@ -56,9 +60,10 @@ public class RequestServlet extends HttpServlet {
         String accept = request.getParameter("accept");
         String body = request.getParameter("body");
         String mediaType = request.getParameter("mediaType");
+        String queryString = request.getParameter("query");
         RequestType requestType = RequestType.valueOf(request.getParameter("requestType"));
         
-        RequestBuilder requestBuilder = new RequestBuilder(url);
+        RequestBuilder requestBuilder = new RequestBuilder(QueryHelper.addQueryString(url, queryString));
         ClientResponse clientResponse = null;
         try {
             clientResponse = requestBuilder.addHeader("Accept", accept)

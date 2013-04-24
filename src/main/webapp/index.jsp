@@ -7,6 +7,8 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Small Web App To Test RESTEasy</h1>
+        
+        <a href="${pageContext.request.contextPath}/request">Request Builder</a>
     </body>
 </html>

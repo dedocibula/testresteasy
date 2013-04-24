@@ -39,6 +39,10 @@
                     </td>
                 </tr>
                 <tr>
+                    <th>Query</th>
+                    <td><input type="text" name="query" /></td>
+                </tr>
+                <tr>
                     <th>Accepts</th>
                     <td><input type="text" name="accept" /></td>
                 </tr>
