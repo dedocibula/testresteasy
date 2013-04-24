@@ -71,7 +71,7 @@ public class RequestServlet extends HttpServlet {
                 writer.println("<div>" + clientResponse.getResponseStatus() + "</div>");
                 for (Object object : clientResponse.getHeaders().keySet())
                     writer.print("<div>" + object + " : " + clientResponse.getHeaders().get(object) + "</div>");
-                writer.print("<div>" + clientResponse.getEntity() + "</div>");            
+                writer.print("<pre>" + clientResponse.getEntity() + "</pre>");            
             }
         } catch (Exception ex) {
             response.getWriter().print(ex);

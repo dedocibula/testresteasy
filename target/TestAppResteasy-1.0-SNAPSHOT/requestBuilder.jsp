@@ -60,6 +60,8 @@
         <hr />
         <br />
         
+        <h1>Response</h1>
+        
         <div id="response"></div>
             
     <script>
